@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "NodeNext",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "outDir": "./build", // Change this to your desired output directory
+    "baseUrl": ".", // Base URL for absolute imports
+    "paths": {
+      "@/*": ["./src/*"] // Define aliases for absolute imports,
+    },
+    "typeRoots": ["./src/types"],
+    "plugins": [
+      /* Transform paths in output .js files */
+      {
+        "transform": "typescript-transform-paths"
+      },
+      /* Transform paths in output .d.ts files */
+      {
+        "transform": "typescript-transform-paths",
+        "afterDeclarations": true
+      }
+    ]
+  },
+  "include": ["src/**/*.ts", "app.ts"],
+  //   "include": ["src/**/*.ts", "types/**/*.ts", "app.ts"],
+  "exclude": ["node_modules", "**/*.spec.ts"]
+}
