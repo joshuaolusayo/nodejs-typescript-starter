@@ -17,18 +17,6 @@ const Environment = {
     process.env.SENDGRID_API_KEY
   ),
   FRONTEND_URL: throwIfUndefined("Frontend URL", process.env.FRONTEND_URL),
-  STRIPE_SECRET_KEY: throwIfUndefined(
-    "Striple Secret Key",
-    process.env.STRIPE_SECRET_KEY
-  ),
-  STRIPE_PUBLISHABLE_KEY: throwIfUndefined(
-    "Striple Publishable Key",
-    process.env.STRIPE_PUBLISHABLE_KEY
-  ),
-  STRIPE_WEBHOOK_SECRET: throwIfUndefined(
-    "Striple Webhook Secret",
-    process.env.STRIPE_WEBHOOK_SECRET
-  ),
   NODEMAILER_EMAIL_USERNAME: process.env.NODEMAILER_EMAIL_USERNAME || "",
   NODEMAILER_EMAIL_PASSWORD: process.env.NODEMAILER_EMAIL_PASSWORD || "",
   SENDCHAMP_ACCESS_KEY: process.env.SENDCHAMP_ACCESS_KEY || "",

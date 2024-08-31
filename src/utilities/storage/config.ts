@@ -3,7 +3,7 @@ import multer from "multer";
 import multerS3 from "multer-s3";
 import { S3Client } from "@aws-sdk/client-s3";
 
-const s3_config = new S3Client({
+const s3ClientConfig = new S3Client({
   region: Environment.AWS_REGION,
   credentials: {
     accessKeyId: Environment.AWS_ACCESS_KEY,
@@ -14,7 +14,7 @@ const s3_config = new S3Client({
 const upload = multer({
   storage: multerS3({
     bucket: Environment.AWS_BUCKET_NAME,
-    s3: s3_config,
+    s3: s3ClientConfig,
     acl: "public-read",
     metadata: function (req, file, cb) {
       cb(null, { fieldName: file.fieldname });
@@ -26,6 +26,6 @@ const upload = multer({
 });
 
 const storage = multer.memoryStorage();
-const upload_file = multer({ storage: storage });
+const uploadFile = multer({ storage: storage });
 
-export { upload, s3_config as s3, upload_file };
+export { upload, s3ClientConfig as s3, uploadFile as upload_file };

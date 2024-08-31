@@ -15,26 +15,16 @@ export interface IUserModel extends IBaseModel {
   firstname: string;
   lastname: string;
   email: string;
-  // phone: PhoneNumberType;
   password: string;
   phone?: string;
   gender: string;
   dateOfBirth?: Date;
   id: number;
-  // class: Schema.Types.ObjectId;
-  // attendance: boolean;
   isPhoneVerified?: boolean;
   isEmailVerified?: boolean;
   role: string;
-  stripeCustomerId?: string;
   state?: string;
   profilePicture?: string;
-  // subscriptionPreference: Schema.Types.ObjectId;
-  subscriptionPreference?: {
-    planType: string;
-    planAmount: number;
-    planDuration: string;
-  };
 }
 
 export interface IAdminModel extends IBaseModel {

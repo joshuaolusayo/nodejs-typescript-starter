@@ -6,6 +6,8 @@ declare global {
       headers: { authorization: any };
       payload: any; // Replace 'any' with the appropriate type for your payload
       user: IUserModel;
+      file?: Express.Multer.File;
+      files?: Express.Multer.File[];
     }
   }
 }

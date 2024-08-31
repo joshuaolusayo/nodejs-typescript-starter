@@ -274,7 +274,7 @@ class UserService extends RootService {
   async testSMS(request: Request, next: NextFunction) {
     appEvent.emit(ALL_EVENTS.sendSMS, {
       phoneNumber: request.body.phone,
-      message: `Your Therapy verification code is: 123456`,
+      message: `Your verification code is: 123456`,
     });
     return this.processSuccessfulResponse({});
   }
@@ -282,11 +282,11 @@ class UserService extends RootService {
   async testEmail(request: Request, next: NextFunction) {
     appEvent.emit(ALL_EVENTS.sendEmail, {
       subject: "Testing something",
-      recipientEmail: "oyelekeoluwasayo@gmail.com",
-      preHeader: "asdfasd",
-      username: "ade",
+      recipientEmail: "username@email.com",
+      preHeader: "Testing",
+      username: "Username",
       // phoneNumber: request.body.phone,
-      message: `Your Therapy verification code is: 123456`,
+      message: `Your verification code is: 123456`,
     });
     return this.processSuccessfulResponse({});
   }
@@ -715,7 +715,7 @@ class UserService extends RootService {
           _id: request.user._id,
         },
         {
-          profile_picture: file.location,
+          profilePicture: file.location,
         }
       );
 

@@ -123,30 +123,6 @@ export const UserSignupSchema = Joi.object({
   // role: Joi.string().valid(...Object.keys(AdminRole)),
 });
 
-export const TherapistSignupSchema = Joi.object({
-  ...RequiredEmail,
-  // ...RequiredPhone,
-  ...RequiredFullName,
-  ...RequiredGender,
-  reasonForJoining: Joi.string().required(),
-  // ...RequiredPassword,
-  // role: Joi.string().valid(...Object.keys(AdminRole)),
-});
-
-export const TherapistSignupByAdminSchema = Joi.object({
-  ...RequiredEmail,
-  // ...RequiredPhone,
-  ...RequiredFullName,
-  ...RequiredGender,
-  // reasonForJoining: Joi.string().required(),
-  // ...RequiredPassword,
-  // role: Joi.string().valid(...Object.keys(AdminRole)),
-});
-
-export const VerifyTherapistSchema = Joi.object({
-  userId: Joi.string().hex().length(24),
-});
-
 export const UserIdSchema = Joi.object({
   id: Joi.string().hex().length(24),
 });

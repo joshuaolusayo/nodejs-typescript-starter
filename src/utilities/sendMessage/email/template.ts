@@ -20,7 +20,7 @@ export const emailTemplate = ({ username, message }: TemplateProps) => {
                       <table role="presentation" cellspacing="0" cellpadding="0" border="0" align="center" width="100%" style="background-color: #002EFE; color: #ffffff; text-align: center; padding: 20px;">
                           <tr>
                               <td>
-                                  <h1 style="color: #FFBD31; font-size: 24px; margin-bottom: 10px;">Therapy</h1>
+                                  <h1 style="color: #FFBD31; font-size: 24px; margin-bottom: 10px;">Business Name</h1>
                               </td>
                           </tr>
                       </table>
@@ -41,9 +41,9 @@ export const emailTemplate = ({ username, message }: TemplateProps) => {
               <tr>
                   <td>
                       <img src="https://res.cloudinary.com/djwa4cx9u/image/upload/v1694792441/364382515_656320169762268_5589206679461502534_n_swgxk9.jpg" alt="Company Logo" style="width: 100px; height: auto;">
-                      <p>Therapy</p>
-                      <p>Visit our website: <a href="https://www.therapy.com" style="color: #FFBD31; text-decoration: none;">www.therapy.com</a></p>
-                      <p>Contact us at: <a href="mailto:therapy@gmail.com" style="color: #FFBD31; text-decoration: none;">joshtherapy@gmail.com</a></p>
+                      <p>Business Name</p>
+                      <p>Visit our website: <a href="https://www.business.com" style="color: #FFBD31; text-decoration: none;">www.business.com</a></p>
+                      <p>Contact us at: <a href="mailto:business@gmail.com" style="color: #FFBD31; text-decoration: none;">info@business.com</a></p>
                   </td>
               </tr>
           </table>

@@ -85,13 +85,13 @@ const generateNewPassword = (): string => {
 };
 
 const filterNonNullValues = (data: Record<string, any>) => {
-  let return_field: Record<string, any> = {};
+  let returnField: Record<string, any> = {};
   Object.entries(data).forEach(([key, value]) => {
     if (value !== null && value !== undefined) {
-      return_field[key] = value;
+      returnField[key] = value;
     }
   });
-  return return_field;
+  return returnField;
 };
 
 const parseAzureStorageUrl = (

@@ -114,9 +114,6 @@ JWT_ISSUER=your_jwt_issuer
 DB_URI=your_mongo_db_uri
 SENDGRID_API_KEY=your_sendgrid_api_key
 FRONTEND_URL=your_frontend_url
-STRIPE_SECRET_KEY=your_stripe_secret_key
-STRIPE_PUBLISHABLE_KEY=your_stripe_publishable_key
-STRIPE_WEBHOOK_SECRET=your_stripe_webhook_secret
 ```
 
 ## Scripts

@@ -52,18 +52,6 @@ const UserSchema = new Schema<IUserModel>({
   profilePicture: {
     type: String,
   },
-  stripeCustomerId: {
-    type: String,
-  },
-  // subscriptionPreference: {
-  //   type: Schema.Types.ObjectId,
-  //   ref: "SubscriptionPlan",
-  // },
-  subscriptionPreference: {
-    planType: { type: String },
-    planAmount: { type: Number },
-    planDuration: { type: String },
-  },
   isActive: {
     type: Boolean,
     required: true,

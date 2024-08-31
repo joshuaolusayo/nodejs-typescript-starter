@@ -5,7 +5,7 @@
 import express, { Router } from "express";
 import userRoute from "./user";
 import adminRoute from "./admin";
-import fileRoute from "./api/file";
+// import fileRoute from "./api/file";
 // import contactRoute from "./contact";
 
 const router: Router = express.Router();

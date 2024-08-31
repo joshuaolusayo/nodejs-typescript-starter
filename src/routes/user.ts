@@ -117,7 +117,7 @@ router
 // .put(
 //   "/profile-picture",
 //   authMiddleware.authenticate([{ model: "User" }]),
-//   upload.single("profile_picture"),
+//   upload.single("profilePicture"),
 //   async (request: Request, _: Response, next: NextFunction) => {
 //     request.payload = await userServiceInstance.modifyProfilePicture(
 //       request,
