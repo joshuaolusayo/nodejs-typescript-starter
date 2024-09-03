@@ -11,6 +11,7 @@ This is a Node.js starter project that provides a scalable architecture for buil
 - [Scripts](#scripts)
 - [Usage](#usage)
 - [API Endpoints](#api-endpoints)
+- [Contributors](#contributors)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -168,6 +169,11 @@ npm start
 - **DELETE /api/contacts/:id**: Soft delete a contact message by ID.
 
 > Note: The actual endpoints may vary depending on the implementation details.
+
+## Contributors
+
+- **Joshua Oyeleke** - [joshuaolusayo](https://github.com/joshuaolusayo)
+- **Nathan Oguntuberu** - [noguntuberu](https://github.com/noguntuberu)
 
 ## Contributing
 

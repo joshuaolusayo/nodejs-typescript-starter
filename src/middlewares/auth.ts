@@ -27,7 +27,6 @@ class AuthMiddleware extends SuperController {
     super();
   }
 
-  // authenticate = (...roles: ("User" | "Admin" | "Instructor")[]) => {
   authenticate = (roles: RoleModelPair[]) => {
     return async (
       request: Request,

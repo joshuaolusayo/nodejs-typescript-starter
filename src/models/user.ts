@@ -14,10 +14,10 @@ const UserSchema = new Schema<IUserModel>({
     required: true,
     unique: true,
   },
-  firstname: {
+  firstName: {
     type: String,
   },
-  lastname: {
+  lastName: {
     type: String,
   },
   phone: {

@@ -48,8 +48,8 @@ const RequiredDateOfBirth = {
 };
 
 const RequiredFullName = {
-  firstname: Joi.string().required(),
-  lastname: Joi.string().required(),
+  firstName: Joi.string().required(),
+  lastName: Joi.string().required(),
 };
 
 export const AuthSchema = Joi.object({
@@ -128,8 +128,8 @@ export const UserIdSchema = Joi.object({
 });
 
 export const UpdateProfileSchema = Joi.object({
-  firstname: Joi.string(),
-  lastname: Joi.string(),
+  firstName: Joi.string(),
+  lastName: Joi.string(),
   phone: Joi.string(),
   gender: Joi.string(),
   dateOfBirth: Joi.date()
@@ -141,7 +141,7 @@ export const UpdateProfileSchema = Joi.object({
 });
 
 export const UpdateAdminSchema = Joi.object({
-  firstname: Joi.string(),
-  lastname: Joi.string(),
+  firstName: Joi.string(),
+  lastName: Joi.string(),
   phone: Joi.string(),
 });

@@ -216,7 +216,7 @@ class AdminService extends RootService {
     try {
       const result = await this.adminControllerInstance.readRecords(
         { _id: currentUser._id, ...this.standardQueryMeta }
-        // "firstname lastname email"
+        // "firstName lastName email"
       );
 
       if (result?.data && result.data.length > 0) {
@@ -269,8 +269,8 @@ class AdminService extends RootService {
       appEvent.emit(ALL_EVENTS.sendEmail, {
         subject: "Account registration successful",
         recipientEmail: email.trim().toLowerCase(),
-        message: `Welcome ${body.firstname} ${body.lastname}. Your new password is <span style="font-weight:bold">${password}</span>. You can log in with it and change it if you wish. Ensure you keep your password safe.`,
-        username: `${body.firstname} ${body.lastname}`,
+        message: `Welcome ${body.firstName} ${body.lastName}. Your new password is <span style="font-weight:bold">${password}</span>. You can log in with it and change it if you wish. Ensure you keep your password safe.`,
+        username: `${body.firstName} ${body.lastName}`,
       });
 
       return this.processSingleRead({ ...result, password } as IDocument);
@@ -354,7 +354,7 @@ class AdminService extends RootService {
       const otpCode = generateOTP();
 
       await this.tokenControllerInstance.createRecord({
-        type: VERIFICATION_TYPE.ResetPassword,
+        type: VERIFICATION_TYPE.RESET_PASSWORD,
         otp: otpCode,
         email: email.trim().toLowerCase(),
         expiresAt: Date.now() + 1200000, // 20mins
@@ -406,7 +406,7 @@ class AdminService extends RootService {
       const isResetTokenValid =
         await this.tokenControllerInstance.checkIfExists("Token", {
           email: email.trim().toLowerCase(),
-          type: VERIFICATION_TYPE.ResetPassword,
+          type: VERIFICATION_TYPE.RESET_PASSWORD,
           otp,
           expiresAt: { $gte: Date.now() },
           ...this.standardQueryMeta,
@@ -422,7 +422,7 @@ class AdminService extends RootService {
       await this.tokenControllerInstance.updateRecords(
         {
           email: email.trim().toLowerCase(),
-          type: VERIFICATION_TYPE.ResetPassword,
+          type: VERIFICATION_TYPE.RESET_PASSWORD,
           otp,
         },
         { isActive: false }

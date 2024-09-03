@@ -9,11 +9,11 @@ export enum AdminRole {
 }
 
 export enum VERIFICATION_TYPE {
-  PhoneVerification = "phone verification",
-  ResetPassword = "reset password",
-  ResetAdminPassword = "reset admin password",
-  EmailVerification = "email verification",
-  AdminEmailVerification = "admin email verification",
+  PHONE_VERIFICATION = "phone_verification",
+  RESET_PASSWORD = "reset_password",
+  RESET_ADMIN_PASSWORD = "reset_admin_password",
+  EMAIL_VERIFICATION = "email_verification",
+  ADMIN_EMAIL_VERIFICATION = "admin_email_verification",
 }
 
 export enum CURRENCY_TYPE {

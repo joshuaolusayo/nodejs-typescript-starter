@@ -244,7 +244,7 @@ class UserService extends RootService {
       const otpCode = generateOtp();
 
       await this.tokenController.createRecord({
-        type: VERIFICATION_TYPE.EmailVerification,
+        type: VERIFICATION_TYPE.EMAIL_VERIFICATION,
         otp: otpCode,
         email: email.trim().toLowerCase(),
         expiresAt: Date.now() + 1200000, // 20mins
@@ -257,8 +257,8 @@ class UserService extends RootService {
       appEvent.emit(ALL_EVENTS.sendEmail, {
         subject: "Account registration successful",
         recipientEmail: email.trim().toLowerCase(),
-        message: `Welcome ${body.firstname} ${body.lastname}. Your new password is <span style="font-weight:bold">${body.password}</span>. Use this link to activate your account: ${link}.`,
-        username: `${body.firstname} ${body.lastname}`,
+        message: `Welcome ${body.firstName} ${body.lastName}. Your new password is <span style="font-weight:bold">${body.password}</span>. Use this link to activate your account: ${link}.`,
+        username: `${body.firstName} ${body.lastName}`,
       });
 
       return this.processSingleRead({
@@ -312,7 +312,7 @@ class UserService extends RootService {
         "Token",
         {
           email,
-          type: VERIFICATION_TYPE.EmailVerification,
+          type: VERIFICATION_TYPE.EMAIL_VERIFICATION,
           otp,
           expiresAt: { $gte: Date.now() },
           ...this.standardQueryMeta,
@@ -330,7 +330,7 @@ class UserService extends RootService {
         "Token",
         {
           email,
-          type: VERIFICATION_TYPE.EmailVerification,
+          type: VERIFICATION_TYPE.EMAIL_VERIFICATION,
           otp,
         },
         { isActive: false }
@@ -369,7 +369,7 @@ class UserService extends RootService {
       const otp = generateOtp();
 
       const tokenRecord = await this.tokenController.readRecords({
-        type: VERIFICATION_TYPE.EmailVerification,
+        type: VERIFICATION_TYPE.EMAIL_VERIFICATION,
         email,
         ...this.standardQueryMeta,
       });
@@ -377,7 +377,7 @@ class UserService extends RootService {
       if (tokenRecord && tokenRecord.data.length) {
         await this.tokenController.updateRecords(
           {
-            type: VERIFICATION_TYPE.EmailVerification,
+            type: VERIFICATION_TYPE.EMAIL_VERIFICATION,
             email,
             // phone_number: `${phone.code}${phone.number}`,
             _id: tokenRecord.data[0]._id,
@@ -390,7 +390,7 @@ class UserService extends RootService {
         );
       } else {
         await this.tokenController.createRecord({
-          type: VERIFICATION_TYPE.EmailVerification,
+          type: VERIFICATION_TYPE.EMAIL_VERIFICATION,
           email,
           otp,
           expiresAt,
@@ -407,7 +407,7 @@ class UserService extends RootService {
         subject: "Email Verification OTP",
         recipientEmail: email,
         message: `Hi. Your Use this otp to activate your account: ${otp}. Click this link ${link}`,
-        // username: `${body.firstname} ${body.lastname}`,
+        // username: `${body.firstName} ${body.lastName}`,
       });
 
       return this.processSuccessfulResponse({
@@ -440,7 +440,7 @@ class UserService extends RootService {
       const otpCode = generateOtp();
 
       await this.tokenController.createRecord({
-        type: VERIFICATION_TYPE.ResetPassword,
+        type: VERIFICATION_TYPE.RESET_PASSWORD,
         otp: otpCode,
         email,
         expiresAt: Date.now() + 1200000, // 20mins
@@ -454,7 +454,7 @@ class UserService extends RootService {
         subject: "Reset Your Password",
         recipientEmail: email.trim().toLowerCase(),
         message: `Hi! Password Reset Token: <span style="font-weight:bold">${otpCode}</span>. You can use this link instead: <span style="font-weight:bold">${link}</span>`,
-        username: `${currentUser.firstname} ${currentUser.lastname}`,
+        username: `${currentUser.firstName} ${currentUser.lastName}`,
       });
 
       return this.processSuccessfulResponse({
@@ -484,7 +484,7 @@ class UserService extends RootService {
 
       const isTokenValid = await this.tokenController.checkIfExists("Token", {
         email,
-        type: VERIFICATION_TYPE.ResetPassword,
+        type: VERIFICATION_TYPE.RESET_PASSWORD,
         otp,
         expiresAt: { $gte: Date.now() },
         ...this.standardQueryMeta,
@@ -500,7 +500,7 @@ class UserService extends RootService {
       await this.tokenController.updateRecords(
         {
           email,
-          type: VERIFICATION_TYPE.ResetPassword,
+          type: VERIFICATION_TYPE.RESET_PASSWORD,
           otp,
         },
         { isActive: false }
@@ -626,12 +626,11 @@ class UserService extends RootService {
       if (result?.data?.length) {
         const userRecord = result.data[0];
 
-        // TODO: Add this constraint back
-        // const { error: verifyEmailError } =
-        //   await this.checkIfEmailIsNotVerified(email);
+        const { error: verifyEmailError } =
+          await this.checkIfEmailIsNotVerified(email);
 
-        // if (verifyEmailError)
-        //   return this.processFailedResponse(verifyEmailError);
+        if (verifyEmailError)
+          return this.processFailedResponse(verifyEmailError);
 
         const isPasswordCorrect = await isMatchingPassword(
           password,

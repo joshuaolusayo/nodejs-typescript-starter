@@ -7,11 +7,11 @@ import { IAdminModel } from "@/types/schema";
 import { AdminRole } from "@/constants/enums";
 
 const AdminSchema = new Schema<IAdminModel>({
-  firstname: {
+  firstName: {
     type: String,
     required: true,
   },
-  lastname: {
+  lastName: {
     type: String,
     required: true,
   },

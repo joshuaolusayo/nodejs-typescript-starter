@@ -12,8 +12,8 @@ export interface ILanguageModel extends IBaseModel {
 }
 
 export interface IUserModel extends IBaseModel {
-  firstname: string;
-  lastname: string;
+  firstName: string;
+  lastName: string;
   email: string;
   password: string;
   phone?: string;
@@ -30,8 +30,8 @@ export interface IUserModel extends IBaseModel {
 export interface IAdminModel extends IBaseModel {
   email: string;
   password: string;
-  firstname: string;
-  lastname: string;
+  firstName: string;
+  lastName: string;
   role: AdminRole;
   // phone: PhoneNumberType;
   phone: string;

@@ -56,6 +56,16 @@
     "node": "20.x",
     "yarn": "1.x"
   },
+  "contributors": [
+    {
+      "name": "Joshua Oyeleke",
+      "url": "https://github.com/joshuaolusayo"
+    },
+    {
+      "name": "Nathan Oguntuberu",
+      "url": "https://github.com/noguntuberu"
+    }
+  ],
   "devDependencies": {
     "@types/bcryptjs": "^2.4.2",
     "@types/cors": "^2.8.13",
