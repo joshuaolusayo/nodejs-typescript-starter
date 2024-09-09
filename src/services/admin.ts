@@ -453,7 +453,7 @@ class AdminService extends RootService {
   async login(request: Request, next: NextFunction) {
     try {
       const { body } = request;
-      const { error } = LoginSchema.validate(body);
+      const { error } = LoginSchema.validate(body, { abortEarly: false });
       if (error) return this.processValidationsErrors(error);
 
       const { password, email } = request.body;
